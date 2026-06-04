@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>On-Prem AI for Pharmacovigilance — ICSR Case Intake | Nfinity Infotech</title>
+  <meta name="description" content="Apply AI to adverse-event case intake without your safety data leaving your network. On-premise, human-in-the-loop ICSR screening, extraction, MedDRA coding, narratives and E2B export. Built for CROs and pharma under GVP and India's DPDP.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <!-- Intent tracking beacon (first-party; feeds the Nfinity intent engine) -->
+  <script src="https://t.nfinityinfotech.com/t.js" async></script>
+</head>
+<body>
+<header class="nav">
+  <div class="wrap nav-in">
+    <div class="brand">Nfinity Infotech <span>· PV ICSR Assistant</span></div>
+    <a href="#demo" class="btn btn-sm">Book a demo</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="eyebrow">On-premise AI for pharmacovigilance</div>
+    <h1>Apply AI to adverse-event case intake —<br><span class="hl">without your safety data ever leaving your network.</span></h1>
+    <p class="lede">A human-in-the-loop assistant that screens literature, extracts and MedDRA-codes
+      ICSRs, drafts case narratives, and exports E2B — running entirely inside your environment.
+      No third-party LLM. No data egress. By architecture, not by promise.</p>
+    <div class="cta-row">
+      <a href="#demo" class="btn">Book a 15-min air-gapped demo</a>
+      <a href="#how" class="btn btn-ghost">See how it works</a>
+    </div>
+    <div class="trust">
+      <span>🔒 Zero data egress</span><span>🧾 Full audit trail</span>
+      <span>🧠 On-prem LLM</span><span>📤 E2B export</span><span>👤 Human-in-the-loop</span>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap problem">
+    <h2>The bind every PV team is in</h2>
+    <p>Case volumes and literature keep rising. Trained safety associates are scarce. Modern LLMs
+      could absorb the repetitive intake work — but patient safety data can't be sent to a public
+      cloud model under GVP, GxP, and India's DPDP. So the one tool that would help most is the one
+      you're not allowed to use.</p>
+    <p class="emph">Unless the model runs inside your own four walls.</p>
+  </div>
+</section>
+
+<section id="how" class="wrap">
+  <h2 class="center">From published case report to a reviewed, E2B-ready ICSR</h2>
+  <div class="steps">
+    <div class="step"><span>1</span><h3>Screen</h3><p>Ingests literature and flags valid ICSRs vs
+      noise using a transparent rule — not a black box.</p></div>
+    <div class="step"><span>2</span><h3>Extract & code</h3><p>Pulls patient, suspect drug, and
+      adverse events; suggests MedDRA PT/SOC for the coder to confirm.</p></div>
+    <div class="step"><span>3</span><h3>Draft</h3><p>Generates a factual case narrative from the
+      structured fields — the associate edits, never re-types.</p></div>
+    <div class="step"><span>4</span><h3>Review & export</h3><p>A qualified human approves; the case
+      exports as ICH ICSR (E2B) XML for Argus, ARISg, or Veeva Vault Safety.</p></div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap two-col">
+    <div>
+      <h2>Why on-premise is the whole point</h2>
+      <ul class="ticks">
+        <li><b>Zero third-party egress.</b> The model, your data, and the audit trail stay inside
+          your environment or VPC. Demonstrable with the network disconnected.</li>
+        <li><b>Validation-ready.</b> Append-only audit trail, model/prompt version pinning, and
+          explainable rules — designed for 21 CFR Part 11 / GAMP 5 / GVP.</li>
+        <li><b>Assistive, never autonomous.</b> The AI drafts; a qualified human verifies and signs
+          off every case. It does not replace medical review.</li>
+        <li><b>Fits your stack.</b> Exports standard E2B — feeds your existing safety database
+          instead of replacing it.</li>
+      </ul>
+    </div>
+    <div class="aside">
+      <h3>Built for</h3>
+      <p>Mid-size <b>CROs / PV-BPOs</b> who live on cost-per-case, and <b>pharma</b> safety teams
+        with rising volumes and a validated-environment mandate.</p>
+      <h3>Who's behind it</h3>
+      <p><b>Nfinity Infotech</b> — a registered, GST-paying software company. We deploy and support
+        the system on your hardware.</p>
+    </div>
+  </div>
+</section>
+
+<section id="demo" class="wrap demo">
+  <h2 class="center">See it run air-gapped on real published cases</h2>
+  <p class="center sub">Book a 15-minute demo + a free data-leak &amp; cloud-cost audit of your
+    current case-intake workflow. We'll show extraction, coding, narrative, and E2B export with the
+    network cable pulled.</p>
+  <form class="lead-form" data-intent="demo_request" onsubmit="return onLead(event)">
+    <div class="row2">
+      <input type="text" name="name" placeholder="Name" required>
+      <input type="email" name="email" placeholder="Work email" required>
+    </div>
+    <div class="row2">
+      <input type="text" name="company" placeholder="Company" required>
+      <input type="text" name="role" placeholder="Role (e.g. Head of PV)">
+    </div>
+    <textarea name="message" rows="3" placeholder="Anything about your case volume / current setup (optional)"></textarea>
+    <button type="submit" class="btn btn-full">Request the air-gapped demo</button>
+    <p class="form-note" id="formNote">We never share your details. The demo runs on public data — no patient data needed.</p>
+  </form>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <span>© <span id="yr"></span> Nfinity Infotech. On-premise AI for pharmacovigilance.</span>
+    <a href="https://www.nfinityinfotech.com">www.nfinityinfotech.com</a>
+  </div>
+</footer>
+
+<script>
+  document.getElementById("yr").textContent = new Date().getFullYear();
+  function onLead(e){
+    e.preventDefault();
+    // The beacon (t.js) captures the form submit + email as an inbound lead into the
+    // intent engine via the data-intent="demo_request" attribute. We just confirm to the user.
+    try { if (window.intent) window.intent("demo_request", {form: "landing"}); } catch (err) {}
+    document.querySelector(".lead-form").innerHTML =
+      '<div class="thanks">Thanks — we\'ll be in touch shortly to set up your air-gapped demo.</div>';
+    return false;
+  }
+</script>
+</body>
+</html>
