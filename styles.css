@@ -20,6 +20,9 @@ a{color:var(--accent);text-decoration:none}
 .brand{font-weight:800;color:var(--ink);font-size:18px;display:flex;align-items:baseline;gap:10px}
 .brand-ai{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
 .by{font-weight:500;font-size:13px;color:var(--muted);border-left:1px solid var(--line2);padding-left:10px}
+.nav-links{display:flex;align-items:center;gap:18px}
+.nav-link{color:var(--body);font-weight:600;font-size:14px}
+.nav-link:hover{color:var(--ink)}
 
 /* buttons */
 .btn{display:inline-block;background:var(--grad);color:#0a0a0f;padding:13px 22px;border-radius:8px;
@@ -85,6 +88,18 @@ h2{font-size:30px;font-weight:700;margin:0 0 14px}
 .lead-form textarea{margin-bottom:14px}
 .form-note{font-size:13px;color:var(--muted);margin:12px 0 0}
 .thanks{font-size:18px;color:var(--ink);font-weight:600;padding:18px 0}
+
+/* contact-sales (pricing) form inside the aside */
+.demo .sub,#pricing .sub{max-width:680px;margin:0 0 18px;color:var(--body);font-size:17px}
+.sales-form{display:flex;flex-direction:column;gap:10px}
+.sales-form input,.sales-form textarea{width:100%;padding:11px 12px;border:1px solid var(--line2);
+  border-radius:8px;font:inherit;color:var(--ink);background:#0d0d15}
+.sales-form input::placeholder,.sales-form textarea::placeholder{color:#6b6b76}
+.sales-form input:focus,.sales-form textarea:focus{outline:none;border-color:var(--accent)}
+.sales-form .btn-full{margin-top:4px}
+
+/* hidden Google Forms submission sinks */
+.gf-sink{position:absolute;width:0;height:0;border:0;visibility:hidden}
 
 footer{border-top:1px solid var(--line);padding:26px 0;color:var(--muted);font-size:14px}
 .foot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}

@@ -17,7 +17,10 @@
   <div class="wrap nav-in">
     <div class="brand">TrustLock<span class="brand-ai">AI</span>
       <span class="by">for Pharmacovigilance</span></div>
-    <a href="#demo" class="btn btn-sm">Book a demo</a>
+    <nav class="nav-links">
+      <a href="#pricing" class="nav-link">Pricing</a>
+      <a href="#demo" class="btn btn-sm">Book a demo</a>
+    </nav>
   </div>
 </header>
 
@@ -31,7 +34,8 @@
         patient data sealed inside your own network. Zero egress, by architecture.</p>
       <div class="cta-row">
         <a href="#demo" class="btn">Book a demo</a>
-        <a href="#how" class="btn btn-ghost">How it works</a>
+        <!-- .pdf href is auto-detected by the beacon as download -> resource intent -->
+        <a href="assets/trustlockai-architecture-deepdive.pdf" class="btn btn-ghost" download>Architecture deep-dive (PDF)</a>
       </div>
       <div class="trust">
         <span>🔒 Zero data egress</span><span>🖥️ Sealed on-prem appliance</span>
@@ -100,24 +104,67 @@
   </div>
 </section>
 
+<section id="pricing" class="band">
+  <div class="wrap two-col">
+    <div>
+      <h2>Pricing built around your case volume</h2>
+      <p class="sub">TrustLockAI is a server you own, not a per-token cloud bill. Pricing scales with the
+        appliance tier and the workflows you switch on — most teams see a lower 3-year TCO than cloud AI
+        plus the data-residency risk it removes. Tell us your volume and we'll send a tailored quote and
+        TCO breakdown.</p>
+      <ul class="ticks">
+        <li><b>Fixed appliance cost.</b> No surprise usage bills as case volume grows.</li>
+        <li><b>Workflow-based tiers.</b> Start with literature&rarr;ICSR; add coding, narrative, QC.</li>
+        <li><b>3-year TCO model included.</b> We benchmark against your current cloud / manual spend.</li>
+      </ul>
+    </div>
+    <div class="aside">
+      <h3>Contact sales</h3>
+      <!-- data-intent="pricing_view" -> beacon scores this submit as pricing_page intent -->
+      <form id="sales-form" class="sales-form"
+            action="https://docs.google.com/forms/d/e/1FAIpQLSeyx_rVdP_G0ZxC4EY4IOfr3VLoE31AY8rq2kUt62IhkFjQQw/formResponse"
+            method="POST" target="gf-sales" data-intent="pricing_view">
+        <input type="text"  name="entry.1807047106"    placeholder="Name" required>
+        <input type="email" name="entry.145683919"   placeholder="Work email" required>
+        <input type="text"  name="entry.49942456" placeholder="Company" required>
+        <input type="text"  name="entry.265007477"    placeholder="Role (e.g. Head of PV / Delivery)">
+        
+        <textarea name="entry.entry.1172969134" rows="2" placeholder="Anything else? (optional)"></textarea>
+        <button type="submit" class="btn btn-full">Request pricing &amp; TCO</button>
+        <p class="form-note">We'll reply with a tailored quote — no spam, no sharing your details.</p>
+      </form>
+      <div id="sales-thanks" class="thanks" hidden>Thanks — sales will send your tailored pricing &amp; TCO shortly.</div>
+    </div>
+  </div>
+</section>
+
 <section id="demo" class="wrap demo">
   <h2>See it run air-gapped on real published cases</h2>
   <p class="sub">Book a demo and a free data-leak &amp; cloud-cost audit of your case-intake
     workflow. We'll show extraction, coding, narrative, and E2B export with the network cable pulled.</p>
-  <form class="lead-form" data-intent="demo_request" onsubmit="return onLead(event)">
+  <!-- data-intent="demo_request" -> beacon scores this submit as request_demo intent -->
+  <form id="demo-form" class="lead-form"
+        action="https://docs.google.com/forms/d/e/1FAIpQLSeyx_rVdP_G0ZxC4EY4IOfr3VLoE31AY8rq2kUt62IhkFjQQw/formResponse"
+        method="POST" target="gf-demo" data-intent="demo_request">
     <div class="row2">
-      <input type="text" name="name" placeholder="Name" required>
-      <input type="email" name="email" placeholder="Work email" required>
+      <input type="text"  name="entry.1807047106"    placeholder="Name" required>
+      <input type="email" name="entry.145683919"   placeholder="Work email" required>
     </div>
     <div class="row2">
-      <input type="text" name="company" placeholder="Company" required>
-      <input type="text" name="role" placeholder="Role (e.g. Head of PV)">
+      <input type="text"  name="entry.49942456" placeholder="Company" required>
+      <input type="text"  name="entry.265007477"    placeholder="Role (e.g. Head of PV)">
     </div>
-    <textarea name="message" rows="3" placeholder="Anything about your case volume / current setup (optional)"></textarea>
+    <textarea name="entry.1172969134" rows="3" placeholder="Anything about your case volume / current setup (optional)"></textarea>
     <button type="submit" class="btn btn-full">Request the air-gapped demo</button>
-    <p class="form-note" id="formNote">We never share your details. The demo runs on public data — no patient data needed.</p>
+    <p class="form-note">We never share your details. The demo runs on public data — no patient data needed.</p>
   </form>
+  <div id="demo-thanks" class="thanks" hidden>Thanks — we'll be in touch shortly to set up your air-gapped demo.</div>
 </section>
+
+<!-- Hidden sinks: Google Forms posts land here so the page never navigates away.
+     The native form submit still fires, so the beacon (t.js) captures the intent. -->
+<iframe name="gf-demo"  class="gf-sink" title="demo submission"    onload="gfDone('demo')"></iframe>
+<iframe name="gf-sales" class="gf-sink" title="pricing submission" onload="gfDone('sales')"></iframe>
 
 <footer>
   <div class="wrap foot">
@@ -128,12 +175,15 @@
 
 <script>
   document.getElementById("yr").textContent = new Date().getFullYear();
-  function onLead(e){
-    e.preventDefault();
-    try { if (window.intent) window.intent("demo_request", {form: "landing"}); } catch (err) {}
-    document.querySelector(".lead-form").innerHTML =
-      '<div class="thanks">Thanks — we\'ll be in touch shortly to set up your air-gapped demo.</div>';
-    return false;
+  // Each hidden iframe fires onload once on initial render (about:blank); ignore that.
+  // The second load = the Google Forms POST landed, so swap the form for a thank-you.
+  // We don't call window.intent here: the native submit already fired, and the beacon's
+  // capture-phase submit handler scores it from the form's data-intent (no double-count).
+  var gfReady = {};
+  function gfDone(key){
+    if (!gfReady[key]) { gfReady[key] = true; return; }
+    var f = document.getElementById(key + "-form");   if (f) f.hidden = true;
+    var t = document.getElementById(key + "-thanks"); if (t) t.hidden = false;
   }
 </script>
 </body>
